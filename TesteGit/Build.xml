@@ -50,10 +50,10 @@
   </target>
 	
 	
-	<target name="test" depends="compile">
+	<target name="test">
 		<path id="test.classpath">
-		  <pathelement location="${classes}" />
-		  <!-- <pathelement location="/path/to/junit.jar" /> -->
+		  <pathelement location="${build}" />
+		  <pathelement location="${lib}/junit-dep-4.11.jar" />
 		  <fileset dir="${lib}">
 		    <include name="**/*.jar"/>
 		  </fileset>
