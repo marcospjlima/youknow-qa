@@ -17,7 +17,7 @@ public class YouK {
   private WebDriver driver;
   private String baseUrl;
   private boolean acceptNextAlert = true;
-  private StringBuffer verificationErrors = new StringBuffer();
+  //private StringBuffer verificationErrors = new StringBuffer();
 
   @Before
   public void setUp() throws Exception {
