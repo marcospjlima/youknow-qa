@@ -2,7 +2,6 @@ package br.com.codigo.b;
 
 import static junit.framework.Assert.assertTrue;
 
-import java.util.StringTokenizer;
 import java.util.concurrent.TimeUnit;
 
 import org.junit.After;
