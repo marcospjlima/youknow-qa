@@ -9,6 +9,9 @@
   <property name="dist"  location="dist"/>
   <property name="lib"  location="lib"/>
 	
+  <!-- set global properties for this test -->
+  <property name="test.class.name" value="br.com.codigo.b.YouK" />
+	
 
   <target name="init">
     <!-- Create the time stamp -->
@@ -45,4 +48,21 @@
     <delete dir="${build}"/>
     <delete dir="${dist}"/>
   </target>
+	
+	
+	<target name="test" depends="compile">
+		<path id="test.classpath">
+		  <pathelement location="${classes}" />
+		  <!-- <pathelement location="/path/to/junit.jar" /> -->
+		  <fileset dir="${lib}">
+		    <include name="**/*.jar"/>
+		  </fileset>
+		</path>
+		
+	  <junit fork="yes" haltonfailure="yes">
+	    <test name="${test.class.name}" />
+	    <formatter type="plain" usefile="false" />
+	    <classpath refid="test.classpath" />
+	  </junit>
+	</target>	
 </project>

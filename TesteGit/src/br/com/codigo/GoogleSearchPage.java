@@ -10,7 +10,7 @@ public class GoogleSearchPage {
     public void searchFor(String text) {
         // And here we use it. Note that it looks like we've
         // not properly instantiated it yet....
-        q.sendKeys(text);
+        q.sendKeys(text);    
         q.submit();
     }
 }
