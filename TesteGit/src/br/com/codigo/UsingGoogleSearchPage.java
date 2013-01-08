@@ -15,7 +15,7 @@ public class UsingGoogleSearchPage {
 
         // Create a new instance of the search page class
         // and initialise any WebElement fields in it.
-        GoogleSearchPage page = PageFactory.initElements(driver, GoogleSearchPage.class);
+        GoogleSearchPage page = (GoogleSearchPage) PageFactory.initElements(driver, GoogleSearchPage.class);
 
         // And now do the search.
         page.searchFor("Cheese");

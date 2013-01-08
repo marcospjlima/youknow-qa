@@ -2,6 +2,7 @@ package br.com.codigo;
 
 import org.openqa.selenium.WebElement;
 
+
 public class GoogleSearchPage {
     // Here's the element
     private WebElement q;
