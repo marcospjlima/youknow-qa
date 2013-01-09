@@ -25,6 +25,8 @@ public class YouK {
     driver = new FirefoxDriver();
     baseUrl = "http://RJ-DV-010/";
     driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+    
+    testTitleError();
   }
 
   @Test
@@ -46,7 +48,7 @@ public class YouK {
   public void tearDown() throws Exception {
 	  
 	  
-	  testTitleError();
+	  //testTitleError();
 	  
 	  
 	  
