@@ -79,7 +79,7 @@
 	
 	<target name="testng" depends="compile" description="Run the tests">
 			<taskdef resource="testngtasks" classpath="${lib}/testng-6.8.jar"/>
-			<testng outputdir="${build}/test-report">	
+			<testng outputdir="test-report">	
 		
 				<!--
 				<testng outputdir="${basedir}/test-report">
