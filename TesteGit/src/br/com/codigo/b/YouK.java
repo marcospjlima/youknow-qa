@@ -22,7 +22,7 @@ public class YouK {
   @Before
   public void setUp() throws Exception {
     driver = new FirefoxDriver();
-    baseUrl = "http://youknow.affero.com.br/";
+    baseUrl = "http://RJ-DV-010/";
     driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
   }
 
