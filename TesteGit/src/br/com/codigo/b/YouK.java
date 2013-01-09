@@ -30,9 +30,9 @@ public class YouK {
   public void testYoukPasswordLock() throws Exception {
     driver.get(baseUrl + "/youknow/affero");
     driver.findElement(By.id("login:username")).clear();
-    driver.findElement(By.id("login:username")).sendKeys("mki");
+    driver.findElement(By.id("login:username")).sendKeys("marcos.jesus@affero.com.br");
     driver.findElement(By.id("login:password")).clear();
-    driver.findElement(By.id("login:password")).sendKeys("123456");
+    driver.findElement(By.id("login:password")).sendKeys("kyo291076");
     driver.findElement(By.id("login:login-button")).click();
   }
 
@@ -41,6 +41,7 @@ public class YouK {
 	  
 	  
 	  assertTrue(driver.findElement(By.className("msg-title")).getText().equals("Algo deu errado."));
+	  
 	  
 	  
     
