@@ -51,6 +51,7 @@
 	
 	
 	<target name="test">
+		
 		<path id="test.classpath">
 		  <pathelement location="${build}" />
 		  <pathelement location="${lib}/junit-dep-4.11.jar" />
@@ -59,7 +60,9 @@
 		  </fileset>
 		</path>
 		
-	  <junit fork="yes" haltonfailure="yes">
+		<antcall target="compile" />
+		
+		<junit fork="yes" haltonfailure="yes">
 	    <test name="${test.class.name}" />
 	    <formatter type="plain" usefile="false" />
 	    <classpath refid="test.classpath" />
