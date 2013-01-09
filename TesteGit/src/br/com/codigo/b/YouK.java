@@ -4,14 +4,15 @@ import static junit.framework.Assert.assertTrue;
 
 import java.util.concurrent.TimeUnit;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.Test;
+import org.testng.asserts.*;;
 
 public class YouK {
   private WebDriver driver;
@@ -19,7 +20,7 @@ public class YouK {
   private boolean acceptNextAlert = true;
   //private StringBuffer verificationErrors = new StringBuffer();
 
-  @Before
+  @BeforeSuite
   public void setUp() throws Exception {
     driver = new FirefoxDriver();
     baseUrl = "http://RJ-DV-010/";
@@ -36,11 +37,16 @@ public class YouK {
     driver.findElement(By.id("login:login-button")).click();
   }
 
-  @After
+  @Test ( dependsOnMethods  = { "testYoukPasswordLock" })
+  public void testTitleError() throws Exception{
+	  assertTrue(driver.findElement(By.className("msg-title")).getText().equals("Algo deu errado."));
+  }
+  
+  @AfterSuite
   public void tearDown() throws Exception {
 	  
 	  
-	  assertTrue(driver.findElement(By.className("msg-title")).getText().equals("Algo deu errado."));
+	  testTitleError();
 	  
 	  
 	  
