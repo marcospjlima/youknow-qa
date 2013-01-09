@@ -1,0 +1,13 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="youknow-integration-test">
+	<test name="integration-test" verbose="2" annotations="JDK">
+		<groups>
+			<run>
+				<include name="testng" />
+			</run>
+		</groups>
+		<packages>
+			<package name="br.com.codigo.b.*" />			
+		</packages>
+	</test>
+</suite>
