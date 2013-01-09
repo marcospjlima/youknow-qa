@@ -32,7 +32,7 @@ public class YouK {
     driver.findElement(By.id("login:username")).clear();
     driver.findElement(By.id("login:username")).sendKeys("marcos.jesus@affero.com.br");
     driver.findElement(By.id("login:password")).clear();
-    driver.findElement(By.id("login:password")).sendKeys("kyo291076");
+    driver.findElement(By.id("login:password")).sendKeys("kyo2910");
     driver.findElement(By.id("login:login-button")).click();
   }
 
