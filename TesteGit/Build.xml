@@ -70,40 +70,40 @@
 	</target>
 	-->
 	<target name="ykTest">		
-		<antcall target="testng">		
-			<param name="projecttest.suite.location" value="suites/"/>
+		<antcall target="testng">
+			<param name="projecttest.suite.location" value="TesteGit/suites/"/>
 			<param name="projecttest.suite" value="testng.xml"/>
 			<param name="projecttest.infra" value="true"/>
 		</antcall>
 	</target>
 	
 	<target name="testng" depends="compile" description="Run the tests">
-			<taskdef resource="testngtasks" classpath="${lib}/testng-6.8.jar"/>
-			<testng outputdir="test-report">	
-		
-				<!--
-				<testng outputdir="${basedir}/test-report">
-				-->
+			<taskdef resource="testngtask" classpath="${lib}/testng-6.8.jar"/>
+			<testng outputdir="../test-report">
+	<!--
 				<jvmarg value="-Dsun.lang.ClassLoader.allowArraySyntax=true"/>
 				<jvmarg value="-Xms256m"/>
 				<jvmarg value="-Xmx1024m"/>
 				<jvmarg value="-XX:MaxPermSize=512m"/>
 				<jvmarg value="-Dfile.encoding=UTF-8"/>
-				<!--
+	
 				<jvmarg value="-Demma.coverage.out.file=${emma.metadata.dir}/coverage.emma"/>
-				-->
+	-->		
 				<xmlfileset dir="../${projecttest.suite.location}/" includes="${projecttest.suite}"/>
+				    
+	<!--
 				<classpath>
 				    <path refid="build.classpath.test" />
-				   <!--
 				    <path refid="emma.lib" />
 					<pathelement location="../${projectweb.name}/WebContent/" />
 					<pathelement location="../${projectworker.name}/WebContent/" />
 					<pathelement path="${core.dir}" />
 					<pathelement path="${test.dir}" />
-					-->
+					
 				</classpath>
+	-->
 			</testng>
+
 		</target>
 	
 </project>

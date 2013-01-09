@@ -13,6 +13,7 @@ import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
+
 public class YouK {
   private WebDriver driver;
   private String baseUrl;
@@ -28,7 +29,7 @@ public class YouK {
     testTitleError();
   }
 
-  @Test
+  @Test(groups = { "testng" })
   public void testYoukPasswordLock() throws Exception {
     driver.get(baseUrl + "/youknow/affero");
     driver.findElement(By.id("login:username")).clear();
@@ -38,7 +39,8 @@ public class YouK {
     driver.findElement(By.id("login:login-button")).click();
   }
 
-  @Test ( dependsOnMethods  = { "testYoukPasswordLock" })
+  
+  @Test ( groups = { "testng" }, dependsOnMethods  = { "testYoukPasswordLock" })
   public void testTitleError() throws Exception{
 	  assertTrue(driver.findElement(By.className("msg-title")).getText().equals("Algo deu errado."));
   }
@@ -47,7 +49,7 @@ public class YouK {
   public void tearDown() throws Exception {
 	  
 	  
-	  //testTitleError();
+	  testTitleError();
 	  
 	  
 	  
