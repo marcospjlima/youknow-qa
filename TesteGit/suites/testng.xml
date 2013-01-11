@@ -1,6 +1,6 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="testngy">
-	 
+	 <!-- 
 	<test name="LoginError" verbose="2" configfailurepolicy="continue">
 		<groups>
 			<run>
@@ -11,7 +11,7 @@
 			<package name="br.com.codigo.b.*" />			
 		</packages>
 	</test>
-	
+	-->
 	<test name="LoginSuccess" verbose="2" configfailurepolicy="continue">
 		<groups>
 			<run>
