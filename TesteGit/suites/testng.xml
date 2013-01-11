@@ -1,30 +1,41 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="testngy">
-	<!-- 
-	<test name="testngx" verbose="2" configfailurepolicy="continue">
+	 
+	<test name="LoginError" verbose="2" configfailurepolicy="continue">
 		<groups>
 			<run>
-				<include name="testng" />
+				<include name="LoginError" />
 			</run>
 		</groups>
 		<packages>
 			<package name="br.com.codigo.b.*" />			
 		</packages>
 	</test>
-	-->
-	<!--  
-	<test verbose="2" name="Default test">
+	
+	<test name="LoginSuccess" verbose="2" configfailurepolicy="continue">
+		<groups>
+			<run>
+				<include name="LoginOk" />
+			</run>
+		</groups>
+		<packages>
+			<package name="br.com.codigo.b.*" />			
+		</packages>
+	</test>
+	
+<!-- 	  
+<test name="Default test" verbose="2" >
     <classes>
-      <class name="br.com.codigo.b.YouK"/>
+      <class name="br.com.codigo.b.YouK" />
     </classes>
-    </test> 
-	-->
+</test> 
+	
 <test name="sample-Test" preserve-order="true" verbose="2">
     <packages>
         <package name="br.com.codigo.b"/>
     </packages>
 </test>
-  
+ -->  
 </suite>
 
 

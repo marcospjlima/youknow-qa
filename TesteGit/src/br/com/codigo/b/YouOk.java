@@ -13,8 +13,8 @@ import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
-@Test(groups = { "LoginError" })
-public class YouK {
+@Test(groups = { "LoginOk" })
+public class YouOk {
   private WebDriver driver;
   private String baseUrl;
   private boolean acceptNextAlert = true;
@@ -28,22 +28,22 @@ public class YouK {
      
   }
 
-  public void testYoukPasswordLock() throws Exception {
-	System.out.println("testYoukPasswordLock");
+  public void testYoukPasswordOk() throws Exception {
+	System.out.println("testYoukPasswordOk");
     driver.get(baseUrl + "/youknow/affero");
     driver.findElement(By.id("login:username")).clear();
     driver.findElement(By.id("login:username")).sendKeys("marcos.jesus@affero.com.br");
     driver.findElement(By.id("login:password")).clear();
-    driver.findElement(By.id("login:password")).sendKeys("0");
+    driver.findElement(By.id("login:password")).sendKeys("1");
     driver.findElement(By.id("login:login-button")).click();
-    //assertTrue(driver.findElement(By.className("msg-title")).getText().equals("Algo deu errado."));
+    assertTrue(false);
   }
 
   
-  @Test ( dependsOnMethods  = { "testYoukPasswordLock" })
-  public void testTitleError() throws Exception{
-	  System.out.println("testTitleError");
-	  assertTrue(driver.findElement(By.className("msg-title")).getText().equals("Algo deu errado."));
+  @Test ( dependsOnMethods  = { "testYoukPasswordOk" })
+  public void testTitleOk() throws Exception{
+	  System.out.println("testTitleOk");
+	  assertTrue(driver.findElement(By.id("login-name")) != null);
   }
   
   @AfterSuite
