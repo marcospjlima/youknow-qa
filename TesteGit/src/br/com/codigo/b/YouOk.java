@@ -34,7 +34,7 @@ public class YouOk {
     driver.findElement(By.id("login:username")).clear();
     driver.findElement(By.id("login:username")).sendKeys("marcos.jesus@affero.com.br");
     driver.findElement(By.id("login:password")).clear();
-    driver.findElement(By.id("login:password")).sendKeys("0");
+    driver.findElement(By.id("login:password")).sendKeys("1");
     driver.findElement(By.id("login:login-button")).click();
     //assertTrue(false);
   }
@@ -45,6 +45,21 @@ public class YouOk {
 	  System.out.println("testTitleOk");
 	  assertTrue(driver.findElement(By.id("login-name")) != null);
   }
+  
+  
+  @Test ( dependsOnMethods  = { "testTitleOk" })
+  public void level2() throws Exception{
+	  System.out.println("level2");
+	  assertTrue(true);
+  }
+  
+  @Test ( dependsOnMethods  = { "level2" })
+  public void level3() throws Exception{
+	  System.out.println("level3");
+	  assertTrue(true);
+  }
+  
+    
   
   @AfterSuite
   public void tearDown() throws Exception {

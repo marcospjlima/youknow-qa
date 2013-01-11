@@ -46,6 +46,18 @@ public class YouK {
 	  assertTrue(driver.findElement(By.className("msg-title")).getText().equals("Algo deu errado."));
   }
   
+  @Test ( dependsOnMethods  = { "testTitleError" })
+  public void level2() throws Exception{
+	  System.out.println("level2");
+	  //assertTrue(driver.findElement(By.className("msg-title")).getText().equals("Algo deu errado."));
+  }
+  
+  @Test ( dependsOnMethods  = { "level2" })
+  public void level3() throws Exception{
+	  System.out.println("level3");
+	  //assertTrue(driver.findElement(By.className("msg-title")).getText().equals("Algo deu errado."));
+  }
+  
   @AfterSuite
   public void tearDown() throws Exception {
     
