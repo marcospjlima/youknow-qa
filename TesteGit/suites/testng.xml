@@ -1,6 +1,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="testng">
-	<test name="testng" verbose="2" annotations="JDK">
+<suite name="testngy">
+	<!-- 
+	<test name="testngx" verbose="2" configfailurepolicy="continue">
 		<groups>
 			<run>
 				<include name="testng" />
@@ -10,4 +11,20 @@
 			<package name="br.com.codigo.b.*" />			
 		</packages>
 	</test>
+	-->
+	<!--  
+	<test verbose="2" name="Default test">
+    <classes>
+      <class name="br.com.codigo.b.YouK"/>
+    </classes>
+    </test> 
+	-->
+<test name="sample-Test" preserve-order="true" verbose="2">
+    <packages>
+        <package name="br.com.codigo.b"/>
+    </packages>
+</test>
+  
 </suite>
+
+

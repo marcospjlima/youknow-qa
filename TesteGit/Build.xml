@@ -12,6 +12,15 @@
   <!-- set global properties for this test -->
   <property name="test.class.name" value="br.com.codigo.b.YouK" />
 	
+	
+  <path id="test.classpath">
+	<pathelement location="${build}" />
+	<!--<pathelement location="${lib}/testng-6.8.jar" /> -->
+  	
+	<fileset dir="lib">
+	  <include name="*.jar"/>
+	</fileset>
+  </path>
 
   <target name="init">
     <!-- Create the time stamp -->
@@ -70,17 +79,22 @@
 	</target>
 	-->
 	<target name="ykTest">		
-		<antcall target="testng">
+		<antcall target="testee">
 			<param name="projecttest.suite.location" value="TesteGit/suites/"/>
 			<param name="projecttest.suite" value="testng.xml"/>
 			<param name="projecttest.infra" value="true"/>
 		</antcall>
 	</target>
 	
-	<target name="testng" depends="compile" description="Run the tests">
-			<taskdef resource="testngtask" classpath="${lib}/testng-6.8.jar"/>
-			<testng outputdir="../test-report">
-	<!--
+	<target name="testee" depends="compile" description="Run the tests">
+		
+			<taskdef classpathref="test.classpath" resource="testngtasks" />		 		
+			<!--<classpath refid="test.classpath" /> -->
+			<!--<taskdef resource="testngtasks" classpath="lib/jcommander-1.29.jar"  />-->
+			<testng >
+				<!--<xmlfileset dir="../${projecttest.suite.location}/" includes="${projecttest.suite}"/> -->
+				<xmlfileset dir="suites/" includes="testng.xml"/>
+	<!--			
 				<jvmarg value="-Dsun.lang.ClassLoader.allowArraySyntax=true"/>
 				<jvmarg value="-Xms256m"/>
 				<jvmarg value="-Xmx1024m"/>
@@ -88,10 +102,10 @@
 				<jvmarg value="-Dfile.encoding=UTF-8"/>
 	
 				<jvmarg value="-Demma.coverage.out.file=${emma.metadata.dir}/coverage.emma"/>
-	-->		
+		
 				<xmlfileset dir="../${projecttest.suite.location}/" includes="${projecttest.suite}"/>
 				    
-	<!--
+	
 				<classpath>
 				    <path refid="build.classpath.test" />
 				    <path refid="emma.lib" />

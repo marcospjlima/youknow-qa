@@ -13,7 +13,7 @@ import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
-
+@Test(groups = { "testng" })
 public class YouK {
   private WebDriver driver;
   private String baseUrl;
@@ -25,34 +25,30 @@ public class YouK {
     driver = new FirefoxDriver();
     baseUrl = "http://RJ-DV-010/";
     driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-    
-    testTitleError();
+     
   }
 
-  @Test(groups = { "testng" })
+  @Test
   public void testYoukPasswordLock() throws Exception {
+	System.out.println("testYoukPasswordLock");
     driver.get(baseUrl + "/youknow/affero");
     driver.findElement(By.id("login:username")).clear();
-    driver.findElement(By.id("login:username")).sendKeys("kkk");
+    driver.findElement(By.id("login:username")).sendKeys("marcos.jesus@affero.com.br");
     driver.findElement(By.id("login:password")).clear();
-    driver.findElement(By.id("login:password")).sendKeys("321");
+    driver.findElement(By.id("login:password")).sendKeys("1");
     driver.findElement(By.id("login:login-button")).click();
+    //assertTrue(driver.findElement(By.className("msg-title")).getText().equals("Algo deu errado."));
   }
 
   
-  @Test ( groups = { "testng" }, dependsOnMethods  = { "testYoukPasswordLock" })
+  @Test ( dependsOnMethods  = { "testYoukPasswordLock" })
   public void testTitleError() throws Exception{
+	  System.out.println("testTitleError");
 	  assertTrue(driver.findElement(By.className("msg-title")).getText().equals("Algo deu errado."));
   }
   
   @AfterSuite
   public void tearDown() throws Exception {
-	  
-	  
-	  testTitleError();
-	  
-	  
-	  
     
     /*String verificationErrorString = verificationErrors.toString();
     if (!"".equals(verificationErrorString)) {
