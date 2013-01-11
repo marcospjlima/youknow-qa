@@ -60,7 +60,7 @@
 	
 	
 	<target name="ykTest">		
-		<antcall target="testee">
+		<antcall target="reports">
 			<param name="projecttest.suite.location" value="TesteGit/suites/"/>
 			<param name="projecttest.suite" value="testng.xml"/>
 			<param name="projecttest.infra" value="true"/>
@@ -69,14 +69,23 @@
 	
 	<target name="testee" depends="compile" description="Run the tests">
 		
-			<taskdef classpathref="test.classpath" resource="testngtasks" />		 		
-			
-			<testng classpathref="test.classpath" >
-				<xmlfileset dir="../${projecttest.suite.location}/" includes="${projecttest.suite}"/> 
-				<!-- <xmlfileset dir="suites/" includes="testng.xml"/> -->
-	
-			</testng>
+		<taskdef classpathref="test.classpath" resource="testngtasks" />		 		
+		
+		<testng outputdir="test-report" classpathref="test.classpath" >
+			<xmlfileset dir="../${projecttest.suite.location}/" includes="${projecttest.suite}"/> 
+			<!-- <xmlfileset dir="suites/" includes="testng.xml"/> -->
 
-		</target>
+		</testng>
+
+	</target>
 	
+	<target name="reports" depends="testee">
+		<junitreport todir="test-report">
+			<fileset dir="test-report">
+				<include name="*/*.xml"/>
+			</fileset>
+			<report format="noframes" todir="${build}/test-report"/>
+		</junitreport>
+	</target>
+
 </project>
