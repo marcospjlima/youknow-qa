@@ -34,7 +34,7 @@ public class YouOk {
     driver.findElement(By.id("login:username")).clear();
     driver.findElement(By.id("login:username")).sendKeys("marcos.jesus@affero.com.br");
     driver.findElement(By.id("login:password")).clear();
-    driver.findElement(By.id("login:password")).sendKeys("1");
+    driver.findElement(By.id("login:password")).sendKeys("0");
     driver.findElement(By.id("login:login-button")).click();
     //assertTrue(false);
   }
