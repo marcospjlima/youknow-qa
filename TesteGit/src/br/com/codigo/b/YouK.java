@@ -2,6 +2,10 @@ package br.com.codigo.b;
 
 import static junit.framework.Assert.assertTrue;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.Alert;
@@ -12,6 +16,11 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
+
+import com.thoughtworks.xstream.XStream;
+import com.thoughtworks.xstream.io.xml.DomDriver;
+
+import br.com.bean.LoginSuccess;
 
 @Test(groups = { "LoginError" })
 public class YouK {
@@ -31,10 +40,13 @@ public class YouK {
   public void testYoukPasswordLock() throws Exception {
 	System.out.println("testYoukPasswordLock");
     driver.get(baseUrl + "/youknow/affero");
+    
+    LoginSuccess login = lerXml();
+    
     driver.findElement(By.id("login:username")).clear();
-    driver.findElement(By.id("login:username")).sendKeys("marcos.jesus@affero.com.br");
+    driver.findElement(By.id("login:username")).sendKeys(login.getUser());
     driver.findElement(By.id("login:password")).clear();
-    driver.findElement(By.id("login:password")).sendKeys("0");
+    driver.findElement(By.id("login:password")).sendKeys(login.getPassword());
     driver.findElement(By.id("login:login-button")).click();
     //assertTrue(driver.findElement(By.className("msg-title")).getText().equals("Algo deu errado."));
   }
@@ -90,6 +102,18 @@ public class YouK {
     } finally {
       acceptNextAlert = true;
     }
+  }
+  
+public LoginSuccess lerXml() throws FileNotFoundException{
+	  
+	  XStream xstream = new XStream(new DomDriver());
+	  xstream.alias("loginsuccess", LoginSuccess.class);
+	  
+	  BufferedReader input = new BufferedReader(new FileReader("test-xml" + File.separator + "login-error.xml"));
+
+	  LoginSuccess login = (LoginSuccess) xstream.fromXML(input);
+	   
+	  return login;
   }
 }
 
