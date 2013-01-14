@@ -80,7 +80,12 @@
 			
 		<taskdef classpathref="test.classpath" resource="testngtasks" />		 		
 		
-		<testng outputdir="test-report" classpathref="test.classpath" >
+		<testng outputdir="test-report" classpathref="test.classpath"  
+			haltOnFailure="false" 
+			verbose="2"
+			failureProperty="test.failed"
+			reporter="org.testng.reporters.JUnitXMLReporter">
+			
 			<xmlfileset dir="../${projecttest.suite.location}/" includes="${projecttest.suite}"/> 
 			<!-- <xmlfileset dir="suites/" includes="testng.xml"/> -->
 
