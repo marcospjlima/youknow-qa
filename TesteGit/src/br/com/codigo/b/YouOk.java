@@ -8,10 +8,16 @@ import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.android.AndroidDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.iphone.IPhoneDriver;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
+
+import com.opera.core.systems.OperaDriver;
 
 @Test(groups = { "LoginOk" })
 public class YouOk {
@@ -22,11 +28,40 @@ public class YouOk {
 
   @BeforeSuite
   public void setUp() throws Exception {
-    driver = new FirefoxDriver();
-    baseUrl = "http://RJ-DV-010/";
+    driver = FirefoxBrowser();
+    //driver = OperaBrowser();
+    
+    baseUrl = "http://RJ-DV-010";
     driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
      
   }
+
+	public WebDriver FirefoxBrowser(){
+		return driver = new FirefoxDriver();
+	}
+  
+	/*public WebDriver InternetExplorerBrowser(){
+		 return driver = new InternetExplorerDriver();
+	}
+	
+	public WebDriver ChromeBrowser(){
+		 return driver = new ChromeDriver();
+	}*/
+	
+	public WebDriver OperaBrowser(){
+		 return driver = new OperaDriver();
+	}
+	
+	
+	/*public WebDriver IPhoneBrowser() throws Exception{
+		 return driver = new IPhoneDriver();
+		
+	}
+	
+	public WebDriver AndroidBrowser(){
+		 return driver = new AndroidDriver();
+	}*/
+
 
   public void testYoukPasswordOk() throws Exception {
 	System.out.println("testYoukPasswordOk");
@@ -34,7 +69,7 @@ public class YouOk {
     driver.findElement(By.id("login:username")).clear();
     driver.findElement(By.id("login:username")).sendKeys("marcos.jesus@affero.com.br");
     driver.findElement(By.id("login:password")).clear();
-    driver.findElement(By.id("login:password")).sendKeys("0");
+    driver.findElement(By.id("login:password")).sendKeys("1");
     driver.findElement(By.id("login:login-button")).click();
     //assertTrue(false);
   }
