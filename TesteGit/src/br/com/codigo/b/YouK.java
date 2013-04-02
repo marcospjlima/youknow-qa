@@ -12,29 +12,39 @@ import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxBinary;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxProfile;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
+import br.com.bean.LoginSuccess;
+
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.DomDriver;
 
-import br.com.bean.LoginSuccess;
-
 @Test(groups = { "LoginError" })
 public class YouK {
-  private WebDriver driver; 
+  //private WebDriver driver;
+  private FirefoxDriver driver;
   private String baseUrl;
   private boolean acceptNextAlert = true;
   //private StringBuffer verificationErrors = new StringBuffer();
 
   @BeforeSuite
   public void setUp() throws Exception {
-    driver = new FirefoxDriver();
+	  File file = new File("C:" + File.separator + "Program Files" + File.separator + "Mozilla Firefox" + File.separator + "firefox.exe");
+	  FirefoxProfile profile = new FirefoxProfile();
+	  FirefoxBinary binary = new FirefoxBinary(file);
+	  driver = new FirefoxDriver(binary,profile);
+	    
+	  //driver = new FirefoxDriver();
     baseUrl = "http://youknow.ie13.net";
     driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+    
      
+    
   }
 
   public void testYoukPasswordLock() throws Exception {
