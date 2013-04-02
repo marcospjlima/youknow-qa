@@ -32,14 +32,14 @@ public class YouK {
   @BeforeSuite
   public void setUp() throws Exception {
     driver = new FirefoxDriver();
-    baseUrl = "http://RJ-DV-010";
+    baseUrl = "http://youknow.ie13.net";
     driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
      
   }
 
   public void testYoukPasswordLock() throws Exception {
 	System.out.println("testYoukPasswordLock");
-    driver.get(baseUrl + "/youknow/affero");
+    driver.get(baseUrl + "/youknow/qa");
     
     LoginSuccess login = lerXml();
     
