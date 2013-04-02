@@ -40,7 +40,7 @@ public class YouK {
   public void testYoukPasswordLock() throws Exception {
 	System.out.println("testYoukPasswordLock");
     driver.get(baseUrl + "/youknow/qa");
-    
+
     LoginSuccess login = lerXml();
     
     driver.findElement(By.id("login:username")).clear();
