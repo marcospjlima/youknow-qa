@@ -37,7 +37,7 @@ public class YouOk {
     driver = FirefoxBrowser();
     //driver = OperaBrowser();
      
-    baseUrl = "http://RJ-DV-010";
+    baseUrl = "http://youknow.ie13.net";
     driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
   }
 
