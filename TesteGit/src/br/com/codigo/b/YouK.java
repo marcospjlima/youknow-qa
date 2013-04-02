@@ -24,7 +24,7 @@ import br.com.bean.LoginSuccess;
 
 @Test(groups = { "LoginError" })
 public class YouK {
-  private WebDriver driver;
+  private WebDriver driver; 
   private String baseUrl;
   private boolean acceptNextAlert = true;
   //private StringBuffer verificationErrors = new StringBuffer();
